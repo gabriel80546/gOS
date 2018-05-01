@@ -2,6 +2,8 @@
 	/*************************KERNEL***********************/
 	/******************************************************/
 
+	/call printAdress/
+	9a 79 92 00 00  08 00
 	/CINZA/
 	b8 70 00 00 00		/mov eax,atributo/
 	9a DC 92 00 00  08 00	/call LIMPA_VGA/
@@ -10,11 +12,14 @@
 	/gabriel@OS/
 	47 61 62 72 69 65 6C 40 4F 53 20 2f 20 23 20 00
 
-	b8 85 93 00 00		/Apresentacao ENVOLTA/
+	/Apresentacao ENVOLTA/
+	b8 85 93 00 00
 	bb 71 00 00 00
 	bf 00 00 00 00
 	be 02 00 00 00
-	9a 9A 92 00 00  08 00	/call print_VGA/
+	/call print_VGA/
+	9a 9A 92 00 00  08 00
+
 
 	9a A2 97 00 00  08 00
 	eb 1b
@@ -25,9 +30,9 @@
 
 
 
+	/Apresentacao Conteudo/
 	/add eax,2/
 	81 c0 02 00 00 00
-	/b8 09 99 00 00/		/Apresentacao Conteudo/
 	bb 74 00 00 00
 	bf 1b 00 00 00
 	be 04 00 00 00

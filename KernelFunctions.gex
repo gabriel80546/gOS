@@ -7,59 +7,55 @@
 
 	/9272/
 
-	ea b7 98 00 00  08 00	/jmp 0008:00009372/
+	/jmp Kernel/
+	/jmp 0008:00009a00/
+	ea 00 9a 00 00  08 00
 
 
 	/funcoes/
 
+	/********************************************/
+	/************* printAdress 479h *************/
+	/************ printAdress* 9279h ************/
+	/********************************************/
 
+	/parametros:	nenhum/
+	/descricao:	printa no canto direito o/
+	/		endereco de memoria aonde/
+	/		essa funcao foi chamada/
+	/retorna:	EAX = endereco/
+
+	8b c4
+	8b 00
+	/call  Converta_eax_para_String 9345h/
+	9a 45 93 00 00  08 00
+
+
+	9C		/PUSHFD/
+	60		/PUSHAD/
+
+	b8 49 93 00 00
+	bb 74 00 00 00
+	be 00 00 00 00
+	bf 48 00 00 00
+	/call  print_VGA 92A4h/
+	9a a4 92 00 00  08 00
+
+
+	61		/POPAD/
+	9d		/POPFD/
+
+	cb
 
 	/********************************************/
-	/********** printa_no_topo 47Ah *************/
-	/********************************************/
-	/usando a string apontada por EAX/
-
-	60	/pushad/
-
-
-	ba	00 80 0b 00	/mov edx,b8000h/ /em edx estara o endereco do VGA modo de texto/
-
-	/volta:/
-	8b 08			/mov ecx,[eax]/	/armazena em ecx 2 caracteres e 2 cores/
-
-	81 e1	ff 00 00 00	/and ecx,ffh/	/fica apenas com o primeiro caracter e joga fora os outros 3 bytes/
-
-
-	e3 0f			/jecxz	fim/	/se o caracter eh nulo sai da funcao/
-
-	81 c9	00 3f 00 00	/or ecx,0f00h/	/adiciona a cor 0fh = "branco com fundo preto" ao caracter/
-
-	66 89 0a		/mov [edx],ecx/	/printa o caracter/
-	40			/inc eax/
-	83 c2 02		/add edx,02h/
-
-
-
-
-	eb e7			/jmp volta/
-	/fim:/
-
-
-	61	/popad/
-	cb	/far ret/
-
-
-
-	/********************************************/
-	/************* print_VGA 49Ah ***************/
-	/************ print_VGA* 929Ah **************/
+	/************* print_VGA 4A4h ***************/
+	/************ print_VGA* 92A4h **************/
 	/********************************************/
 
 	/parametros:	EAX aponta para a string a ser printada/
 	/		EBX ou BL atributo/
 	/		ESI linha/
 	/		EDI coluna/
-
 	9C		/PUSHFD/
 	60		/PUSHAD/
 
@@ -155,11 +151,6 @@
 
 
 
-
-
-
-
-
 	/********************************************/
 	/********* ALTERA_CURSOR = 506h *************/
 	/********************************************/
@@ -240,23 +231,21 @@
 
 
 
-
-
-
-
 	/********************************************/
-	/***** Converta_eax_para_String = 53Bh ******/
-	/**** Converta_eax_para_String* = 933Bh *****/
+	/***** Converta_eax_para_String = 545h ******/
+	/**** Converta_eax_para_String* = 9345h *****/
 	/********************************************/
 	/retorna: Converte o Valor de EAX/
+	/	na String apontada em 549h/
+	/	na String apontada em 9349h/
 	/	na String apontada em 53Fh/
 	/	na String apontada em 933Fh/
 	9c
 	60
 
-
 	eb 09
-	/RESULTADO 53F/			/'\0'/
+	/RESULTADO 549/			/'\0'/
+	/RESULTADO 53F/
 	30 30 30 30  30 30 30 30	00
 
 
@@ -272,7 +261,7 @@
 	81 c2 07 00 00 00	/add edx,30h/
 
 
-	88 15 /56Bh/46 93 00 00	/mov RESULTADO,dl/
+	88 15 /56Bh//novo = 575h/50 93 00 00	/mov RESULTADO,dl/
 
 
 	c1 e8 04		/SHR eax,4/
@@ -286,7 +275,7 @@
 
 	/restaurando a instrucao modificada/
 	b0 46			/mov al,46h/
-	88 05 6b 93 00 00	/mov [0x936b],al/
+	88 05 75 93 00 00	/mov [0x9375],al/
 	/restaurando a instrucao modificada/
 
 	61
@@ -322,19 +311,6 @@
 	20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
 
 	00
-
-
-	/ANTIGO sHELL/
-	/DEPRECATED/
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe eb fe eb fe eb fe
-	eb fe 90
 
 
 	/********************************************/
@@ -407,10 +383,6 @@
 	5f 5e 5d 5c /5b/ 5a 59 /58/	/pop todos menos eax e ebx/
 	9d
 	cb
-
-
-
-
 
 
 	/********************************************/
@@ -529,36 +501,45 @@
 	9d
 	cb
 
-	/********************************************/
-	/************* printAdress 9A2h *************/
-	/************ printAdress* 97A2h ************/
-	/********************************************/
-
-	/parametros:	nenhum/
-	/descricao:	printa no canto direito o/
-	/		endereco de memoria aonde/
-	/		essa funcao foi chamada/
-	/retorna:	EAX = endereco/
-	8b c4
-	8b 00
-	/call  Converta_eax_para_String/
-	9a 3b 93 00 00  08 00
 
 
-	9C		/PUSHFD/
-	60		/PUSHAD/
+/	00 01 02 03 04 05 06 07     08 09 0a 0b 0c 0d 0e 0f/
 
-	b8 3f 93 00 00
-	bb 74 00 00 00
-	be 00 00 00 00
-	bf 48 00 00 00
-	9a 9a 92 00 00  08 00
+/00/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/10/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/20/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/30/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/40/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/50/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/60/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/70/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/80/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/90/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/a0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/b0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/c0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/d0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/e0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/f0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
 
-	61		/POPAD/
-	9d		/POPFD/
+/	00 01 02 03 04 05 06 07     08 09 0a 0b 0c 0d 0e 0f/
 
-	cb
-
+/00/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/10/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/20/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/30/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/40/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/50/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/60/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/70/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/80/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/90/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/a0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/b0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/c0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/d0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/e0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
+/f0/	90 90 90 90 90 90 90 90 /~/ 90 90 90 90 90 90 90 90
 
 /	00 01 02 03 04 05 06 07     08 09 0a 0b 0c 0d 0e 0f/
 
