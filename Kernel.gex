@@ -2,8 +2,14 @@
 	/*************************KERNEL***********************/
 	/******************************************************/
 
-	/call printAdress/
+	/call findAdress/
 	9a 79 92 00 00  08 00
+
+
+	/call print_VGA ID_1/
+	bb 01 00 00 00
+	9a 7e 92 00 00  08 00
+
 	/CINZA/
 	b8 70 00 00 00		/mov eax,atributo/
 	9a DC 92 00 00  08 00	/call LIMPA_VGA/
