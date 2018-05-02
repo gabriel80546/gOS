@@ -65,12 +65,28 @@
 
 	/call findAdress/
 	9a 79 92 00 00  08 00
+	/ecx = cursor/
+	/eax = cursor_cursor/
 	/mov ecx,eax/
 	8b c8
 
-	
+	/EDX = KEY_CURSOR/
+	/MOV EDX,*KEY/
+	/MOV EDX,EDI/
+	8B D7
 
-	eb fe
+	/TEST if *key = *cursor/
+	/OPEN BRACKETS/
+	60
+
+	60 B9 00 00 00 00 E3 FE 61 /BREAKPOINT/
+	8B 
+	3B C0
+
+	/CLOSE BRACKETS/
+	61
+
+	EB FE
 
 	/POPAD/
 	61
