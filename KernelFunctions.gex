@@ -30,9 +30,10 @@
 	/******* redirecionadorDeFuncoes 47Eh *******/
 	/****** redirecionadorDeFuncoes* 927Eh ******/
 	/********************************************/
-	/parametros:	EBX = nomeDaFuncao/
+	/parametros:	EBX = ID da funcao/
 	/descricao:	executa a funcao com o nome dado/
-	/retorna:	NADA/
+	/retorna:	os mesmos valores/
+	/		que a funcao retorna/
 
 	/PUSHFD/
 	9C
@@ -74,18 +75,14 @@
 	/EDX = KEY_CURSOR/
 	/MOV EDX,*KEY/
 	/MOV EDX,EDI/
-	ba 00 00 00 00
+	8B D7
 
 	/TEST if *key = *cursor/
-	/OPEN BRACKETS/
-	60
 
 	60 B9 00 00 00 00 E3 FE 61 /BREAKPOINT/
 	8A 28
 	3B C0
 
-	/CLOSE BRACKETS/
-	61
 
 	EB FE
 
