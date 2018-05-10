@@ -47,7 +47,7 @@
 	/KEY/
 	1f 69 5b bf b7 98 f0 5a fa 39 bb b9 d8 07 7a 14
 	/add eax,2/
-	/eax = *KEY/
+	/STACK+1 = *KEY/
 	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
@@ -60,17 +60,17 @@
 	/KEYFINAL/
 	4c 9c f8 39 6d f1 a2 c1 17 b6 69 0a e0 ce aa e3
 	/add eax,2/
-	/eax = *KEYFINAL/
+	/STACK+2 = *KEYFINAL/
 	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
 
+	/cursor = valor aleatorio/
 	/call findAdress/
 	9a 79 92 00 00  08 00
-	/ecx = cursor/
-	/eax = cursor_cursor/
-	/mov ecx,eax/
-	8b c8
+	/STACK+3 = cursor/
+	/PUSH EAX/
+	50
 
 	/EDX = KEY_CURSOR/
 	/MOV EDX,*KEY/
