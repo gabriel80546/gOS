@@ -4,7 +4,6 @@
 	/******************************************************/
 
 
-	9C 60 B9 00 00 00 00 E3 FE 61 9D /BREAKPOINT/
 	b8 00 00 00 00
 	89 05 00 00 09 00
 	89 05 fc ff 08 00
@@ -23,14 +22,15 @@
 	89 05 c8 ff 08 00
 	89 05 c4 ff 08 00
 	89 05 c0 ff 08 00
-
-	/call findAdress/
-	9a 79 92 00 00  08 00
+	9C 60 B9 00 00 00 00 E3 FE 61 9D /BREAKPOINT/
 
 
 	/call print_VGA ID_1/
 	bb 01 00 00 00
 	9a 7e 92 00 00  08 00
+
+	/call findAdress/
+	9a 79 92 00 00  08 00
 
 	/CINZA/
 	b8 70 00 00 00		/mov eax,atributo/

@@ -45,8 +45,8 @@
 	eb 10
 	/KEY/
 	1f 69 5b bf b7 98 f0 5a fa 39 bb b9 d8 07 7a 14
-	/add eax,2/
 	/STACK+1 = *KEY/
+	/add eax,2/
 	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
@@ -58,8 +58,8 @@
 	eb 10
 	/KEYFINAL/
 	4c 9c f8 39 6d f1 a2 c1 17 b6 69 0a e0 ce aa e3
-	/add eax,2/
 	/STACK+2 = *KEYFINAL/
+	/add eax,2/
 	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
