@@ -1,0 +1,8 @@
+c
+set ecx=1
+s 3
+xp /384bx 0x8fec0
+s 18
+xp /384bx 0x8fec0
+c
+u
