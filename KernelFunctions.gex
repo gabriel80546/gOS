@@ -68,12 +68,18 @@
 	9a 79 92 00 00  08 00
 
 
-	/*TODO* BUSCA/
-	/9C 60 B9 00 00 00 00 E3 FE 61 9D/ /BREAKPOINT/
+/*TODO* BUSCA/
+/INICIO/
+	/BREAKPOINT/
+	9C 60 B9 00 00 00 00 E3 FE 61 9D
+
+	/POP EAX/
+	/58/
+	/MOV ebx,eax/
+	8b c8
 
 	eb fe
-	/FIM/
-
+/FIM/
 
 	/POPAD/
 	61
