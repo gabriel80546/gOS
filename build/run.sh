@@ -8,11 +8,11 @@ rm /home/gabriel/lks/osdev/.*.swp
 rm /home/gabriel/lks/osdev/.*.swo
 clear
 echo -e "\033[1;35m./compile.sh\033[0m"
-./compile.sh | grep aaaaaaabbbbbbbbbccccccddddddd
+./compile.sh | :
 
 echo -e "\033[1;35m./run.sh\033[0m"
 
 projeto=`cat projeto.add`
 projeto="../$projeto"
-echo -e "\033[1;36mqemu-system-i386 $projeto #[supress output]\033[0m"
-qemu-system-i386 $projeto 2>&1 >/dev/null | grep aaaaaaabbbbbbbbbccccccddddddd
+echo -e "\033[1;36mqemu-system-i386 $projeto\033[0m"
+qemu-system-i386 $projeto 2>&1 >/dev/null | :
