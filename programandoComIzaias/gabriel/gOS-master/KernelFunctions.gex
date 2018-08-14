@@ -77,17 +77,6 @@
 	/58/
 	/MOV ebx,eax/
 	8b c8
-	/MOV ebx,0/
-	bb 00 00 00 00
-	/MOV edx, ecx/
-
-
-
-
-
-
-
-
 
 	eb fe
 /FIM/
