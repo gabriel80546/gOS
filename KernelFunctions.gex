@@ -25,6 +25,7 @@
 	cb
 
 
+
 	/********************************************/
 	/******* redirecionadorDeFuncoes 47Eh *******/
 	/****** redirecionadorDeFuncoes* 927Eh ******/
@@ -75,18 +76,18 @@
 
 	/POP EAX/
 	/58/
-	/MOV ebx,eax/
+	/MOV ecx,eax/
 	8b c8
 	/MOV ebx,0/
 	bb 00 00 00 00
 	/MOV edx, ecx/
+	8b d1
 
 
-
-
-
-
-
+	/********************************************/
+	/********* findAdress de uma linha **********/
+	/********************************************/
+	e8 00
 
 
 	eb fe
