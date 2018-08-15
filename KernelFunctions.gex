@@ -82,6 +82,9 @@
 /INICIO/
 	/BREAKPOINT/
 	9C 60 B9 00 00 00 00 E3 FE 61 9D
+	/ECX = CURSOR/
+	/EBX = P/
+	/EDX = CURSOR2/
 
 	/POP EAX/
 	/58/
@@ -94,7 +97,21 @@
 
 	/**** findAdress de uma linha ****/
 	e8 00 00 00 00 58 81 c0 07 00 00 00
-
+	/CMP [EDX], [KEY + EBX]/
+		/MOV EAX, EBX/
+		8b c3
+		/MOV EAX, (ESP + 4)/
+		8b c4
+		40 40 40 40
+		/MOV EAX, [EAX]/
+		8b 00
+			/EAX = KEY*/
+		/ADD EAX, EBX/
+		03 c3
+			/EAX = KEY* + EBX/
+		/MOV EAX, [EAX]/
+			/EAX = [KEY* + EBX]/
+		8b 00
 
 
 	eb fe
