@@ -96,7 +96,7 @@
 	8b d1
 
 	/**** findAdress de uma linha ****/
-	e9 00 00 00 00 58 81 c0 07 00 00 00
+	e8 00 00 00 00 58 81 c0 07 00 00 00
 	/CMP [EDX], [KEY + EBX]/
 		/MOV EAX, EBX/
 		8b c3
@@ -121,7 +121,7 @@
 /FIM/
 
 	/POPAD/
-	62
+	61
 	/POPFD/
 	9D
 	cb
