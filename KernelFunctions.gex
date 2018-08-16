@@ -98,6 +98,7 @@
 	/**** findAdress de uma linha ****/
 	e8 00 00 00 00 58 81 c0 09 00 00 00
 	/edi = @/
+	/MOV EDI, EAX/
 	8b f8
 	/CMP [EDX], [KEY + EBX]/
 		/MOV EAX, EBX/
@@ -116,7 +117,10 @@
 			/EAX = [KEY* + EBX]/
 		/CMP [EDX], AL/
 		3a 02
-		74 02
+		/JE +3/
+		74 03
+		42
+		/JMP EDI/
 		ff e7
 		90 90
 	eb fe
