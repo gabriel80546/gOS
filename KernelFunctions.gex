@@ -110,10 +110,10 @@
 		03 c3
 			/EAX = KEY* + EBX/
 		/MOV EAX, [EAX]/
-			/EAX = [KEY* + EBX]/
 		8b 00
-
-
+			/EAX = [KEY* + EBX]/
+		/CMP [EDX], AL/
+		3a 02
 	eb fe
 /FIM/
 
