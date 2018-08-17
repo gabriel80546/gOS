@@ -224,7 +224,7 @@
 /**********_BOCHS_************/
 
 	bb 00 90	/mov bx,9000h/
-	b6 06		/mov dh,5h/		/dh = quantidade de setores lidos/
+	b6 07		/mov dh,5h/		/dh = quantidade de setores lidos/
 
 	8a 16 18 7d	/mov dl,[BOOT_DRIVE]/
 
