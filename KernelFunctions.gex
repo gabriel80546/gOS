@@ -85,6 +85,17 @@
 	/ECX = CURSOR/
 	/EBX = P/
 	/EDX = CURSOR2/
+	/EAX <- Acessa a Memoria/
+	/EDI = @/
+	/ESI = @@/
+	/ESP <- STACK/ /ESP* = KEY, (ESP* + 4) = KEYFINAL/
+	/DISPONIVEIS: EBP/
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/esi = @@/
+	/MOV ESI, EAX/
+	8b f0
 
 	/MOV ecx,eax/
 	8b c8
@@ -104,29 +115,31 @@
 		40 40 40 40
 		/MOV EAX, [EAX]/
 		8b 00
-			/EAX = KEY*/
 		/ADD EAX, EBX/
 		03 c3
-			/EAX = KEY* + EBX/
 		/MOV EAX, [EAX]/
 		8b 00
-			/EAX = [KEY* + EBX]/
-		/MOV EDX, ECX/
-		8b d1
+					/MOV EDX, ECX/
+					8b d1
 		/CMP [EDX], AL/
 		3a 02
 		/JE +24/
 		74 24
-		/INC EDX; INC ECX/
-		42 41
+		/INC ECX; INC EDX/
+		41 42
 		/JMP EDI/
 		ff e7
+		/NOP .../
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
-		9C 60 B9 00 00 00 00 E3 FE 61 9D /BREAKPOINT/
+		/BREAKPOINT/
+		9C 60 B9 00 00 00 00 E3 FE 61 9D
+		/INC EDX/
+		42
+		/JMP -2/
 		eb fe
 /FIM/
 
@@ -142,6 +155,7 @@
 	/ID = 1/
 	01 00 00 00
 	/********************************************/
+	/**************** print_VGA 1 ***************/
 	/************** print_VGA 4A4h **************/
 	/************* print_VGA* 92A4h *************/
 	/********************************************/
