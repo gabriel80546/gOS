@@ -9,21 +9,6 @@
 
 	/funcoes/
 
-	/********************************************/
-	/************** findAdress 479h *************/
-	/************* findAdress* 9279h ************/
-	/********************************************/
-	/parametros:	nenhum/
-	/descricao:	descobre em que endereco logo abaixo aonde essa funcao/
-	/		foi chamada/
-	/retorna:	EAX = endereco/
-
-	/mov eax,esp/
-	8b c4
-	/mov eax,[eax]/
-	8b 00
-	cb
-
 	/*********************************/
 	/**** findAdress de uma linha ****/
 	/*********************************/
@@ -48,40 +33,34 @@
 	/PUSHAD/
 	60
 
-	/call findAdress/
-	9a 79 92 00 00  08 00
+	/**** findAdress de uma linha **** +2/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
 	/JMP KEY/
 	eb 10
 	/KEY/
 	1f 69 5b bf b7 98 f0 5a fa 39 bb b9 d8 07 7a 14
 	/STACK+1 = *KEY/
-	/add eax,2/
-	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
 
 
-	/call findAdress/
-	9a 79 92 00 00  08 00
+	/**** findAdress de uma linha **** +2/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
 	/JMP KEY/
 	eb 10
 	/KEYFINAL/
 	4c 9c f8 39 6d f1 a2 c1 17 b6 69 0a e0 ce aa e3
 	/STACK+2 = *KEYFINAL/
-	/add eax,2/
-	81 c0 02 00 00 00
 	/PUSH EAX/
 	50
 
 	/cursor = valor aleatorio/
-	/call findAdress/
-	9a 79 92 00 00  08 00
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 07 00 00 00
 
 
 /*TODO* BUSCA/
 /INICIO/
-	/BREAKPOINT/
-	9C 60 B9 00 00 00 00 E3 FE 61 9D
 	/ECX = CURSOR/
 	/EBX = P/
 	/EDX = CURSOR2/
@@ -90,12 +69,6 @@
 	/ESI = @@/
 	/ESP <- STACK/ /ESP* = KEYFINAL, (ESP* + 4) = KEY/
 	/DISPONIVEIS: EBP/
-
-	/**** findAdress de uma linha ****/
-	e8 00 00 00 00 58 81 c0 09 00 00 00
-	/esi = @@/
-	/MOV ESI, EAX/
-	8b f0
 
 	/MOV ecx,eax/
 	8b c8
@@ -106,10 +79,19 @@
 
 	/**** findAdress de uma linha ****/
 	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/esi = @@/
+	/MOV ESI, EAX/
+	8b f0
+	/@@/
+
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
 	/edi = @/
 	/MOV EDI, EAX/
 	8b f8
 	/CMP [EDX], [KEY + EBX]/
+		/@/
 		/MOV EAX, (ESP + 4)/
 		8b c4
 		40 40 40 40
@@ -126,6 +108,7 @@
 		/INC EDX/
 		42
 		/JMP EDI/
+		/JMP @/
 		ff e7
 		/NOP .../
 		90 90 90 90 90 90 90 90
@@ -133,6 +116,8 @@
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
+		/BREAKPOINT/
+		9C 60 B9 00 00 00 00 E3 FE 61 9D
 		/CMP EBX, 10h/
 		81 fb 10 00 00 00
 		/JL +24/
@@ -147,8 +132,9 @@
 		90 90 90 90 90 90 90 90
 		90 90 90 90 90 90 90 90
 
-		/BREAKPOINT/
-		9C 60 B9 00 00 00 00 E3 FE 61 9D
+		/INC EBX/
+		43
+
 
 		/JMP -2/
 		eb fe
