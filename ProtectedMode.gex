@@ -1,120 +1,20 @@
-/setor2 = 9200h/
+	/******************************************************/
+	/************* Entrando em Modo Protegido *************/
+	/******************************************************/
+	/SETOR 1 = A200h (memory)/
+	/SETOR 1 = 200h  (file)/
 
-
-
-
-/
-;	ax	cx	dx	bx
-;	es	cs	ss	ds
-;	c0	c8	d0	d8
-/
-
-	/8c = ax <- seg/
-	/8e = ax -> seg/
-
-
-
-
-	/**********************Tentando usar os segmentos**********************/
-
-	/b8 00 b0	c7 06 87 7c 01 00	9a 80 7c 00 00/		/mov ax, b000h/
-	/8c d0		c7 06 87 7c 03 00	9a 80 7c 00 00/		/mov ax, ds/
-	/8e d0		c7 06 87 7c 02 00	9a 80 7c 00 00/		/mov ds, ax/
-	/8c d0		c7 06 87 7c 03 00	9a 80 7c 00 00/		/mov ax, ds/
-	/b0 61		c7 06 87 7c 04 00	9a 80 7c 00 00/		/mov al, '?'/
-	/c6 06 00 80 61	c7 06 87 7c 05 00	9a 80 7c 00 00/		/mov [8000h],al/
-
-	/**********************Tentando usar os segmentos**********************/
-
-
-
-	/32bits/
-
-	/67 c7 05   00 80 0b 00  61 70	c7 06 87 7c 00 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   a0 80 0b 00  61 71	c7 06 87 7c 01 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   40 81 0b 00  61 72	c7 06 87 7c 02 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   e0 81 0b 00  61 73	c7 06 87 7c 03 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   80 82 0b 00  61 74	c7 06 87 7c 04 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   20 83 0b 00  61 75	c7 06 87 7c 05 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   c0 83 0b 00  61 76	c7 06 87 7c 06 00	9a 80 7c 00 00/		/mov [8000h],al/
-	/67 c7 05   60 84 0b 00  61 77	c7 06 87 7c 07 00	9a 80 7c 00 00/		/mov [8000h],al/
-
-	/32bits/
-
-
-
-	/Bootado = 9200h/
-
-
-	/printVGA_string = 9200h/
-	/*(file + 400)/
-	/printa a string apontada por ax/
-	9c
-	60
-
-
-	/******************inicializacoes**********************/
-
-	66 ba 00 80 0b 00	/mov edx, b8000h/ /b8000h = VGA/
-	b7 /409/0f			/mov bh, 0fh/
-	8b f0			/mov si,ax/
-
-	/******************inicializacoes**********************/
-
-	/inicio 40c/
-	8a 1c		/mov bl,[si]/
-
-
-	80 fb 00	/cmp bl,0/
-
-	74 08		/jz saida/ /413/
-
-	67 89 1a	/mov [edx], ebx/
-
-
-	42 42		/inc dx/ /inc dx/ 
-
-	/67 89 1a/	/mov [edx], ebx/
-
-	46		/inc si/ 
-	eb f1		/jmp inicio/
-
-	/saida = 41bh/
-
-
-
-	61
-	9d
-	cb
-
-
-
-
-
-
+	/Pular GDT/
+	ea 23 A2 00 00
 	/***************************************************/
-	/***********************GDT*************************/
+	/********************** GDT ************************/
 	/***************************************************/
 
-	/*(file + 41eh)/
-
-
-	eb 1e
-
-
-	/GDT = *(file + 420h) = 9220/
-
-
-
-
-
-
-	/gdt_null/
-	00 00 00 00 /the mandatory null descriptor/
+	/GDT_NULL/
+	00 00 00 00 /THE MANDATORY NULL DESCRIPTOR/
 	00 00 00 00
 
-
-	/gdt_code/
+	/GDT_CODE/
 	ff ff		/Limit (bits 0-15)/
 	00 00		/Base (bits 0-15)/
 	00		/Base (bits 16-23)/
@@ -122,12 +22,7 @@
 	CF		/11001111 2nd flags, Limit (bits 16-19)/
 	00		/Base (bits 24-31)/
 
-
-
-
-
-
-	/gdt_data = *(file + 430h)/
+	/GDT_DATA = *(FILE + 430H)/
 	ff ff		/Limit (bits 0-15)/
 	00 00		/Base (bits 0-15)/
 	00		/Base (bits 16-23)/
@@ -135,43 +30,35 @@
 	CF		/11001111 2nd flags, Limit (bits 16-19)/
 	00		/Base (bits 24-31)/
 
+	/GDT_END/
 
-	/gdt_end/
-
-
-
-
-	/GDT descriptor = *(file + 438h) = 9238h/
+	/GDT Descriptor = A21Dh/
 	17 00		/17 = 23 , 24 é o numero de bytes do GDT/
-	20 92 00 00	/endereço do inicio do GDT/
+	05 a0 00 00	/endereço do inicio do GDT/
 
-	/43E/
-	/GDT = *(file + 43Eh) = 923Eh/
+	/***************************************************/
+	/********************** GDT ************************/
+	/***************************************************/
 
-
-	/MUDANDO PARA MODO PROTEGIDO/
-
-
+	/BREAKPOINT/
+	/9c 60 b9 00 00 00 00 e3 fe 61 9d/
 
 	bd 00 90	/mov bp,9000h/
 	8b e5 		/mov sp,bp/
 
-
-
-
 	FA		/cli/
-	0f 01 16 38 92	/lgdt [GDT descriptor]/
+	0f 01 16 1d a2	/lgdt [GDT descriptor]/
 	0f 20 C0	/mov eax,CR0/
 	66 83 C8 01	/or eax,0x1/
 	0f 22 c0	/mov CR0,eax/
 
-	ea 58 92 08 00 /pular funcoes/
+
+	ea 48 a2 08 00  /pular funcoes/
 
 
 	/47fh/
 	/aqui ja esta em 32 bits/
-
-
+	eb fe
 
 	ba 6c 92 00 00
 
@@ -182,17 +69,10 @@
 	8e e8
 
 	/464 = 9264/
-
 	/468 = 9268/
-
 	/469/
 
-
-
 	8e d0
-
-
-
 
 
 	bd 00 00 09 00	/mov ebp,0x90000/

@@ -15,7 +15,7 @@ function findKeyAddress() {
 	for(ecx_memoryIndex = 0; ecx_memoryIndex < 24; ecx_memoryIndex++) {
 		ebx_p = 0;
 		edx_temp = ecx_memoryIndex;
-		while(memory.charAt(edx_temp) == key.charAt(ebx_p)) { /*&& (ebx_p<16)) {*/
+		while(memory.charAt(edx_temp) == key.charAt(ebx_p)) {
 			edx_temp++;
 			ebx_p++;
 		}

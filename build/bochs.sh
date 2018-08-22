@@ -12,3 +12,4 @@ cd iso/
 echo -e "\033[1;36mbochs\033[0m"
 #bochs -q -rc /home/gabriel/lks/osdev/build/bochs.sh.txt
 bochs -q
+cp -r ../*.gex /media/gabriel/GABRIEL/

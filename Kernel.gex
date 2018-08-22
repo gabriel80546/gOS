@@ -1,18 +1,34 @@
-	/9C 60 B9 00 00 00 00 E3 FE 61 9D/ /BREAKPOINT/
 	/******************************************************/
-	/*************************KERNEL***********************/
+	/*********************** KERNEL ***********************/
 	/******************************************************/
+	/BREAKPOINT/
+	/9c 60 b9 00 00 00 00 e3 fe 61 9d/
 
-	/call print_VGA ID_1/
+	/CALL FUNCAO 55/
+	bb 55 00 00 00
+	9a 96 92 00 00  08 00
+
+	/CALL PRINT_VGA ID 1/
 	bb 01 00 00 00
-	9a 7e 92 00 00  08 00
+	9a 96 92 00 00  08 00
 
-	/call findAdress/
+	/CALL ALTERA_CURSOR ID 3/
+	bb 03 00 00 00
+	9a 96 92 00 00  08 00
+
+	/CALL LIMPA_VGA ID 2/
+	bb 02 00 00 00
+	9a 96 92 00 00  08 00
+
+
+	/CALL findAddress/
 	9a 79 92 00 00  08 00
 
 	/CINZA/
-	b8 70 00 00 00		/mov eax,atributo/
-	9a DC 92 00 00  08 00	/call LIMPA_VGA/
+	b8 70 00 00 00		/MOV EAX,ATRIBUTO/
+
+	/CALL LIMPA_VGA/
+	9a DC 92 00 00  08 00
 
 	eb 10
 	/gabriel@OS/
@@ -29,7 +45,7 @@
 
 	9a A2 97 00 00  08 00
 	eb 1b
-	/call printAdress/
+	/CALL printAdress/
 	/Seja bem vindo ao Sem Nome/
 	53 65 6a 61 20 62 65 6d 20 76 69 6e 64 6f 20
 	61 6f 20 53 65 6d 20 4e 6f 6d 65 00
@@ -37,18 +53,18 @@
 
 
 	/Apresentacao Conteudo/
-	/add eax,2/
+	/ADD EAX,2/
 	81 c0 02 00 00 00
 	bb 74 00 00 00
 	bf 1b 00 00 00
 	be 04 00 00 00
-	9a 9A 92 00 00  08 00	/call print_VGA/
+	9a 9A 92 00 00  08 00	/CALL print_VGA/
 
-	/call printAdress/
+	/CALL printAdress/
 	/9a A2 97 00 00  08 00/
 
 	/SHELL 8B7h/
-	9a b7 96 00 00  08 00	/call SHELL/
+	9a b7 96 00 00  08 00	/CALL SHELL/
 
 	eb fe
 

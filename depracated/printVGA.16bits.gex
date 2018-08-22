@@ -1,0 +1,37 @@
+	/printVGA_string = 9200h/
+	/*(file + 400)/
+	/printa a string apontada por ax/
+	/9c/
+	/60/
+
+
+	/******************inicializacoes**********************/
+
+	/66 ba 00 80 0b 00/	/mov edx, b8000h/ /b8000h = VGA/
+	/b7/ /409//0f/			/mov bh, 0fh/
+	/8b f0/			/mov si,ax/
+
+	/******************inicializacoes**********************/
+
+	/inicio 40c/
+	/8a 1c/		/mov bl,[si]/
+
+	/80 fb 00/	/cmp bl,0/
+	/74 08/		/jz saida/ /413/
+	/67 89 1a/	/mov [edx], ebx/
+
+	/42 42/		/inc dx/ /inc dx/ 
+
+	/67 89 1a/	/mov [edx], ebx/
+
+	/46/		/inc si/ 
+	/eb f1/		/jmp inicio/
+
+	/saida = 41bh/
+
+
+
+	/61/
+	/9d/
+	/cb/
+
