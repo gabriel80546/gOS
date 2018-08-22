@@ -230,7 +230,6 @@
 
 
 	/vai pra outro setor/
-	/eb fe A0 00 00/
 	 ea 00 A2 00 00
 
 

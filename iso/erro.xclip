@@ -1,0 +1,58 @@
+[CPU0 ] jump_protected: gate type 0 unsupported
+[CPU0 ] interrupt(): gate descriptor is not valid sys seg (vector=0x0d)
+[CPU0 ] interrupt(): gate descriptor is not valid sys seg (vector=0x08)
+[CPU0 ] CPU is in protected mode (active)
+[CPU0 ] CS.mode = 16 bit
+[CPU0 ] SS.mode = 16 bit
+[CPU0 ] EFER   = 0x00000000
+[CPU0 ] | EAX=60000011  EBX=0000a200  ECX=00090002  EDX=00000700
+[CPU0 ] | ESP=00009000  EBP=00009000  ESI=000e0000  EDI=0000f782
+[CPU0 ] | IOPL=0 id vip vif ac vm RF nt of df if tf sf zf af PF cf
+[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+[CPU0 ] |  CS:0000( 0004| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] |  DS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] |  SS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] |  ES:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] |  FS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] |  GS:0000( 0005| 0|  0) 00000000 0000ffff 0 0
+[CPU0 ] | EIP=0000a238 (0000a238)
+[CPU0 ] | CR0=0x60000011 CR2=0x00000000
+[CPU0 ] | CR3=0x00000000 CR4=0x00000000
+(0).[17847863] [0x000000000000a238] 0000:000000000000a238 (unk. ctxt): jmp far 0008:a248         ; ea48a20800
+[CPU0 ] exception(): 3rd (13) exception with no resolution, shutdown status is 00h, resetting
+[SYS  ] bx_pc_system_c::Reset(HARDWARE) called
+[CPU0 ] cpu hardware reset
+[APIC0] allocate APIC id=0 (MMIO enabled) to 0x00000000fee00000
+[CPU0 ] CPUID[0x00000000]: 00000002 756e6547 6c65746e 49656e69
+[CPU0 ] CPUID[0x00000001]: 00000633 00010800 00002028 1fcbfbff
+[CPU0 ] CPUID[0x00000002]: 00410601 00000000 00000000 00000000
+[CPU0 ] CPUID[0x80000000]: 80000008 00000000 00000000 00000000
+[CPU0 ] CPUID[0x80000001]: 00000000 00000000 00000101 2a100000
+[CPU0 ] CPUID[0x80000002]: 20202020 20202020 20202020 6e492020
+[CPU0 ] CPUID[0x80000003]: 286c6574 50202952 69746e65 52286d75
+[CPU0 ] CPUID[0x80000004]: 20342029 20555043 20202020 00202020
+[CPU0 ] CPUID[0x80000005]: 01ff01ff 01ff01ff 40020140 40020140
+[CPU0 ] CPUID[0x80000006]: 00000000 42004200 02008140 00000000
+[CPU0 ] CPUID[0x80000007]: 00000000 00000000 00000000 00000000
+[CPU0 ] CPUID[0x80000008]: 00003028 00000000 00000000 00000000
+[PLGIN] reset of 'pci' plugin device by virtual method
+[PLGIN] reset of 'pci2isa' plugin device by virtual method
+[PLGIN] reset of 'cmos' plugin device by virtual method
+[PLGIN] reset of 'dma' plugin device by virtual method
+[PLGIN] reset of 'pic' plugin device by virtual method
+[PLGIN] reset of 'pit' plugin device by virtual method
+[PLGIN] reset of 'floppy' plugin device by virtual method
+[PLGIN] reset of 'vga' plugin device by virtual method
+[PLGIN] reset of 'acpi' plugin device by virtual method
+[PLGIN] reset of 'ioapic' plugin device by virtual method
+[PLGIN] reset of 'keyboard' plugin device by virtual method
+[PLGIN] reset of 'harddrv' plugin device by virtual method
+[PLGIN] reset of 'pci_ide' plugin device by virtual method
+[PLGIN] reset of 'unmapped' plugin device by virtual method
+[PLGIN] reset of 'biosdev' plugin device by virtual method
+[PLGIN] reset of 'speaker' plugin device by virtual method
+[PLGIN] reset of 'extfpuirq' plugin device by virtual method
+[PLGIN] reset of 'parallel' plugin device by virtual method
+[PLGIN] reset of 'serial' plugin device by virtual method
+[PLGIN] reset of 'gameport' plugin device by virtual method
+[PLGIN] reset of 'iodebug' plugin device by virtual method
