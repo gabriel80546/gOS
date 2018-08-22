@@ -1,0 +1,197 @@
+	/******************************************************/
+	/******************* FUNCOES 32-bits ******************/
+	/******************************************************/
+
+	68 12 34 56 78
+	/CALL KERNEL 0/
+	68 00 00 00 00
+	9a 7b a2 00 00  08 00
+
+	/funcoes/
+
+	/*********************************/
+	/**** findAdress de uma linha ****/
+	/*********************************/
+	e8 00 00 00 00
+	58
+	81 c0 07 00 00 00
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 07 00 00 00
+
+	/********************************************/
+	/********* redirecionadorDeFuncoes **********/
+	/********************************************/
+	/parametros:	[antigo] EBX = ID da funcao/
+	/parametros:	PUSH imm32 = ID da funcao/
+	/descricao:	executa a funcao com o nome dado/
+	/retorna:	os mesmos valores/
+	/		que a funcao retorna/
+
+	9c
+	60
+		e8 00 00 00 00 58 81 c0 1e 00 00 00
+		81 c4 2c 00 00 00
+		8b cc
+		8b 09
+		89 08
+		81 ec 2c 00 00 00
+	61
+	9d
+
+
+	/PUSHFD/
+	9C
+	/PUSHAD/
+	60
+	bb 00 00 00 00
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/JMP KEY/
+	eb 10
+	/KEY/
+	1f 69 5b bf b7 98 f0 5a fa 39 bb b9 d8 07 7a 14
+	/STACK+1 = *KEY/
+	/PUSH EAX/
+	50
+
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/JMP KEY/
+	eb 10
+	/KEYFINAL/
+	4c 9c f8 39 6d f1 a2 c1 17 b6 69 0a e0 ce aa e3
+	/STACK+2 = *KEYFINAL/
+	/PUSH EAX/
+	50
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 07 00 00 00
+	/cursor = valor aleatorio/
+
+
+/*TODO* BUSCA/
+/INICIO/
+	/EAX <- Qualquer Coisa/
+	/ECX = P/
+	/EDX = CURSOR/
+	/EBX = ID/
+	/ESP <- STACK/ /ESP* = KEYFINAL, (ESP* + 4) = KEY/
+	/ESI = @@/
+	/EDI = @/
+	/DISPONIVEIS: EBP/
+
+	/MOV EDX, EAX/
+	8b d0
+	/MOV ECX,0/
+	b9 00 00 00 00
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/MOV ESI, EAX/
+	8b f0
+	/ESI = @@/
+
+
+	81 f9 10 00 00 00
+	75 24
+	4a
+	8b c4
+	48 48 48 48
+	8b 00
+	ff e0
+
+	/NOP .../
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+
+	/MOV ECX, 0/
+	b9 00 00 00 00
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	/EDI = @/
+	/MOV EDI, EAX/
+	8b f8
+	/CMP [EDX], [KEY + ECX]/
+	/MOV EAX, (ESP + 4)/
+		8b c4
+		40 40 40 40
+		/MOV EAX, [EAX]/
+		8b 00
+		/ADD EAX, ECX/
+		03 c1
+		/MOV EAX, [EAX]/
+		8b 00
+		/CMP [EDX], AL/
+		3a 02
+		/JE +24/
+		74 24
+		/INC EDX/
+		42
+		/JMP ESI/
+		/JMP @@/
+		ff e6
+		/NOP .../
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+
+		/CMP ECX, 10h/
+		81 f9 10 00 00 00
+		/JL +24h/
+		7c 24
+		/INC EDX/
+		42
+		/JMP ESI/
+		/JMP @@/
+		ff e6
+		/NOP .../
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		90 90 90 90 90 90 90 90
+		/INC ECX/
+		41
+		/INC EDX/
+		42
+		/**** findAdress de uma linha ****/
+		e8 00 00 00 00 58 81 c0 0e 00 00 00
+		50
+		44 44 44 44
+		/JMP EDI/
+		/JMP @/
+		ff e7
+/FIM/
+	3b 1a
+	74 24
+	b9 00 00 00 00
+	ff e6
+	/NOP .../
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	90 90 90 90 90 90 90 90
+	58 58
+
+	42 42 42 42
+
+
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 0c 00 00 00
+
+	89 10
+
+	61
+	9D
+	9a 00 00 00 00  08 00
+	cb
+/add KernelFunctions.gex/
