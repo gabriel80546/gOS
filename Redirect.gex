@@ -2,10 +2,10 @@
 	/******************* FUNCOES 32-bits ******************/
 	/******************************************************/
 
-	68 12 34 56 78
-	/CALL KERNEL 0/
+	/JMP KERNEL 0/
 	68 00 00 00 00
-	9a 7b a2 00 00  08 00
+	9a 82 a2 00 00  08 00
+	ea 00 00 00 00  08 00
 
 	/funcoes/
 
@@ -26,24 +26,16 @@
 	/descricao:	executa a funcao com o nome dado/
 	/retorna:	os mesmos valores/
 	/		que a funcao retorna/
-
-	9c
-	60
-		e8 00 00 00 00 58 81 c0 1e 00 00 00
-		81 c4 2c 00 00 00
-		8b cc
-		8b 09
-		89 08
-		81 ec 2c 00 00 00
-	61
-	9d
-
-
 	/PUSHFD/
 	9C
 	/PUSHAD/
 	60
-	bb 00 00 00 00
+
+	/colocando arg0 em EBX/
+	81 c4 2c 00 00 00
+	8b dc
+	8b 1b
+	81 ec 2c 00 00 00
 
 	/**** findAdress de uma linha ****/
 	e8 00 00 00 00 58 81 c0 09 00 00 00
@@ -184,14 +176,15 @@
 
 	42 42 42 42
 
-
-	/**** findAdress de uma linha ****/
-	e8 00 00 00 00 58 81 c0 0c 00 00 00
-
+	/colocando arg0 em EAX/
+	81 c4 24 00 00 00
+	8b c4
+	8b 00
+	81 ec 24 00 00 00
+	40
 	89 10
 
 	61
 	9D
-	9a 00 00 00 00  08 00
 	cb
 /add KernelFunctions.gex/
