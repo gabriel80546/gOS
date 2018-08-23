@@ -11,14 +11,21 @@
 	/print_hex = 7c05h/
 	/printa o valor hexadecimal de ax/
 
-	60		/pusha/
-	b9 0c 00	/mov cx,000Ch/
-	8b d8		/mov bx,ax/
-	be 0f 00	/mov si,000Fh/
-	d3 e6		/shl si,cl/
-	23 de		/and bx,si/
+	/PUSHA/
+	60
+	/MOV cx,000Ch/
+	b9 0c 00
+	/MOV bx,ax/
+	8b d8
+	/MOV si,000Fh/
+	be 0f 00
+	/SHL si,cl/
+	d3 e6
+	/AND bx,si/
+	23 de
 
-	be 09 00	/mov si,9h/
+	/mov si,9h/
+	be 09 00
 	d3 e6
 	3b de
 	76 02
@@ -33,7 +40,7 @@
 	e3 02
 	eb 02
 	61
-	cb	/c3 ou cb dep. do call/
+	cb
 
 	81 e9 04 00
 	eb d0
@@ -195,17 +202,13 @@
 	/************************MAIN**************************/
 	/******************************************************/
 
+	/MOV [BOOT_DRIVE],dl/
+	88 16 18 7d
 
-
-
-	88 16 18 7d	/mov [BOOT_DRIVE],dl/
-
-	/8a 06 18 7d/	/mov al,[BOOT_DRIVE]/	/testar a instrucao acima/
-
-
-	bd 00 80	/mov bp,8000h/
-	8b e5		/mov sp,bp/
-
+	/MOV bp,8000H/
+	bd 00 80
+	/MOV sp,bp/
+	8b e5
 
 /**********_BOCHS_************/
 

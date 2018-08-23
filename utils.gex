@@ -1,8 +1,11 @@
-	/
-	BREAKPOINT
-	/
+	/BREAKPOINT/
 	/
 	9c 60 b9 00 00 00 00 e3 fe 61 9d
+	/
+
+	/**** findAdress de uma linha ****/
+	/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
 	/
 
 	/16 bytes/
