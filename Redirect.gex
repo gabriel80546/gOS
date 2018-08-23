@@ -176,7 +176,7 @@
 
 	42 42 42 42
 
-	/colocando arg0 em EAX/
+	/colocando addr em EAX/
 	81 c4 24 00 00 00
 	8b c4
 	8b 00
