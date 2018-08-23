@@ -53,7 +53,8 @@
 	0f 22 c0	/mov CR0,eax/
 
 
-	ea 3d a2 08 00  /pular funcoes/
+	/JMP FAR +0/
+	ea 3d a2 08 00
 
 	/47fh/
 	/aqui ja esta em 32 bits/
@@ -65,10 +66,6 @@
 	8e c0
 	8e e0
 	8e e8
-
-	/464 = 9264/
-	/468 = 9268/
-	/469/
 
 	8e d0
 
