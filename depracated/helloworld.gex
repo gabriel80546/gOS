@@ -1,0 +1,6 @@
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	eb 0d
+	/"Hello World!"/
+	48 65 6c 6c 6f 20 57 6f 72 6c 64 21 00
+eb 10	00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f
