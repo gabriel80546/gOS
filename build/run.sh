@@ -10,8 +10,6 @@ clear
 echo -e "\033[1;35m./compile.sh\033[0m"
 ./compile.sh | grep x | :
 
-echo -e "\033[1;35m./run.sh\033[0m"
-
 projeto=`cat projeto.add`
 projeto="../$projeto"
 echo -e "\033[1;36mqemu-system-i386 $projeto\033[0m"
