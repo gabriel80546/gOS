@@ -5,20 +5,32 @@
 	/init/
 	58 b8 00 00 00 00 b9 00 00 00 00 ba 00 00 00 00 bb 00 00 00 00 be 00 00 00 00 bf 00 00 00 00
 
+	/BREAKPOINT/
+	9c 60 b9 00 00 00 00 e3 fe 61 9d
+	8d 3D 00 80 0B 00
+	8d 0D 00 00 00 00
+	ff e0
+
 
 	/CALL PRINT_VGA f5/
 	68 f6 00 00 00
 	9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
 
-	/CALL SETTING GRAPHICS MODE VGA 1/
-	68 01 00 00 00
-	9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
+	/**** findAdress de uma linha ****/
+	e8 00 00 00 00 58 81 c0 09 00 00 00
+	8b c8
 
-	/CALL DRAW VGA 2/
-	68 02 00 00 00
-	9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
+		/CALL SETTING GRAPHICS MODE VGA 1/
+		68 01 00 00 00
+		9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
 
+		/CALL DRAW VGA 2/
+		68 02 00 00 00
+		9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
+
+	ff e1
 	eb fe
+
 
 	/KEYFINAL/
 	4c 9c f8 39 6d f1 a2 c1 17 b6 69 0a e0 ce aa e3
