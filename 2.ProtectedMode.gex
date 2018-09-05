@@ -72,5 +72,3 @@
 
 	bd 00 00 09 00	/mov ebp,0x90000/
 	89 ec		/mov esp,ebp/
-
-/add Redirect.gex/
