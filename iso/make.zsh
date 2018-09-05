@@ -1,4 +1,4 @@
-
+#!/bin/zsh
 #cria uma imagem de diskete
 dd if=/dev/zero of=floppy.img bs=1024 count=1440
 
