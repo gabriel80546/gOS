@@ -1,10 +1,10 @@
 #!/bin/zsh
 c
-set ecx=1
-s
-s
-s
-u
+#set ecx=1
+#s
+#s
+#s
+#u
 #u
 #s
 #u

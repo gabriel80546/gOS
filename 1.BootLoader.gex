@@ -213,7 +213,7 @@
 /**********_BOCHS_************/
 
 	bb 00 A2	/mov bx,AF00h/
-	b6 04		/mov dh,?h/		/dh = quantidade de setores lidos/
+	b6 05		/mov dh,?h/		/dh = quantidade de setores lidos/
 
 	8a 16 18 7d	/mov dl,[BOOT_DRIVE]/
 	9a f9 7c 00 00	/call disk_load/
