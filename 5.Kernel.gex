@@ -5,6 +5,18 @@
 	/init/
 	58 b8 00 00 00 00 b9 00 00 00 00 ba 00 00 00 00 bb 00 00 00 00 be 00 00 00 00 bf 00 00 00 00
 
+	/screen width/
+	b8 58 02 00 00
+	89 05 00 00 08 00
+
+	/screen height/
+	b8 20 03 00 00
+	89 05 04 00 08 00
+
+	/screen BPP/
+	b8 20 00 00 00
+	89 05 08 00 08 00
+
 
 	/CALL SETTING GRAPHICS MODE VBE 3/
 	68 03 00 00 00
@@ -15,19 +27,6 @@
 	/68 f6 00 00 00/
 	/9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58/
 
-	/**** findAdress de uma linha ****/
-	e8 00 00 00 00 58 81 c0 09 00 00 00
-	8b c8
-
-		/CALL SETTING GRAPHICS MODE VGA 1/
-		68 01 00 00 00
-		9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
-
-		/CALL DRAW VGA 2/
-		68 02 00 00 00
-		9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
-
-	ff e1
 	eb fe
 
 

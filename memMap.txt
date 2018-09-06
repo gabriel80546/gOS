@@ -1,0 +1,3 @@
+0x80000 = screen width
+0x80004 = screen height
+0x80004 = screen BPP (bits per pixel)
