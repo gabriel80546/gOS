@@ -1,2 +1,2 @@
 #!/bin/zsh
-vim -p 5.KernelFunctions.gex 6.Kernel.gex utils.gex
+vim -p 4.KernelFunctions.gex 5.Kernel.gex utils.gex
