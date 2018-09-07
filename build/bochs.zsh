@@ -1,3 +1,4 @@
+#!/bin/zsh
 cd files-bochs
 ./bochs.zsh
 ./init-parse.zsh
