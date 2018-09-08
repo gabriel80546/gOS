@@ -19,11 +19,6 @@
 	68 01 00 00 00
 	9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
 
-	/CALL DRAWING ON GRAPHICS MODE VBE F/
-	68 0f 00 00 00
-	9a 82 a2 00 00  08 00  9a 00 00 00 00  08 00  58
-	eb fe
-
 	eb fe
 
 
