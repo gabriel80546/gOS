@@ -20,19 +20,21 @@
 		ee
 
 		/setting screen width/
-		b8 02 00 00 00
-		ba ce 01 00 00
-		ee
-		8b 05 04 00 08 00
-		ba cf 01 00 00
-		ef
-		/setting screen height/
 		b8 01 00 00 00
 		ba ce 01 00 00
 		ee
 		8b 05 00 00 08 00
 		ba cf 01 00 00
 		ef
+
+		/setting screen height/
+		b8 02 00 00 00
+		ba ce 01 00 00
+		ee
+		8b 05 04 00 08 00
+		ba cf 01 00 00
+		ef
+
 
 		/setting screen BPP/
 		b8 03 00 00 00
@@ -95,7 +97,7 @@
 		ff e2
 
 		/81 fb 1c 00 00 00/
-		81 fb 07 00 00 00
+		81 fb 1c 00 00 00
 		74 02
 		ff e6
 
